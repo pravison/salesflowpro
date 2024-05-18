@@ -1,0 +1,114 @@
+{% extends 'main.html' %}
+{% block title %}About US{% endblock title %}
+{% load static %}
+
+ {% block content %}
+
+  <main id="main">
+    {% for about in aboutUs %}
+    <!-- ======= Breadcrumbs ======= -->
+    <div class="breadcrumbs">
+      <div class="page-header d-flex align-items-center" style="background-image: url('assets/img/page-header.jpg');">
+        <div class="container position-relative">
+          <div class="row d-flex justify-content-center">
+            <div class="col-lg-6 text-center">
+              <h2>About</h2>
+              <p>{{about.about_pitch}}</p>
+            </div>
+          </div>
+        </div>
+      </div>
+      <nav>
+        <div class="container">
+          <ol>
+            <li><a href="{% url 'landing_page' %}">Home</a></li>
+            <li>About</li>
+          </ol>
+        </div>
+      </nav>
+    </div><!-- End Breadcrumbs -->
+    <!-- ======= About Us Section ======= -->
+    <section id="about" class="about">
+      <div class="container" data-aos="fade-up">
+
+        <div class="row gy-4">
+          <div class="col-lg-6 position-relative align-self-start order-lg-last order-first">
+            {% if about.about_image %}
+            <img src="{{about.imageURL}}" class="img-fluid" alt="">
+            {% else %}
+            <img src="{% static 'assets/img/img-5.svg' %}" class="img-fluid" alt="">
+            {% endif %}
+            <a href="{{about.youtube_link}}" class="glightbox play-btn"></a>
+          </div>
+          <div class="col-lg-6 content order-last  order-lg-first">
+            <h3>About Us</h3>
+            <div>{{ about.about_description }}</div>
+          </div>
+        </div>
+
+      </div>
+    </section><!-- End About Us Section -->
+    {% endfor %}
+
+    <!-- ======= Stats Counter Section ======= -->
+    <section id="stats-counter" class="stats-counter pt-0">
+      <div class="container" data-aos="fade-up">
+
+        <div class="row gy-4">
+          {% for stat in statistics %}
+          <div class="col-lg-3 col-md-6">
+            <div class="stats-item text-center w-100 h-100">
+              <span data-purecounter-start="0" data-purecounter-end="{{stat.statistic_number}}" data-purecounter-duration="1" class="purecounter"></span>
+              <p>{{stat.statistic_name}}</p>
+            </div>
+          </div><!-- End Stats Item -->
+          {% endfor %}
+
+      </div>
+    </section><!-- End Stats Counter Section -->
+    {% include 'call-to-action.html' %}
+    <!-- ======= Our Team Section ======= -->
+    <section id="team" class="team pt-0">
+      <div class="container" data-aos="fade-up">
+
+        <div class="section-header">
+          <span>Our Team</span>
+          <h2>Our Team</h2>
+
+        </div>
+
+        <div class="row" data-aos="fade-up" data-aos-delay="100">
+          {% for staff in staffs %}
+          <div class="col-lg-4 col-md-6 d-flex">
+            <div class="member">
+              <img src="{{staff.imageURL}}" class="img-fluid" alt="">
+              <div class="member-content">
+                <h4>{{staff.name}}</h4>
+                <span>{{staff.role}}</span>
+                <p>{{staff.description}}</p>
+                <div class="social">
+                  <a href="{{staff.twitter}}"><i class="bi bi-twitter"></i></a>
+                  <a href="{{staff.facebook}}"><i class="bi bi-facebook"></i></a>
+                  <a href="{{staff.instagram}}"><i class="bi bi-instagram"></i></a>
+                  <a href="{{staff.linkedin}}"><i class="bi bi-linkedin"></i></a>
+                  <a href="{{staff.youtube}}"><i class="bi bi-youtube"></i></a>
+                  <a href="{{staff.tiktok}}"><i class="bi bi-tiktok"></i></a>
+                </div>
+              </div>
+            </div>
+          </div><!-- End Team Member -->
+          {% endfor %}
+
+        </div>
+
+      </div>
+    </section><!-- End Our Team Section -->
+
+    {% include 'testimonial.html' %}
+
+    {% include 'faq.html' %}
+
+  </main><!-- End #main -->
+
+ 
+  {% endblock %}

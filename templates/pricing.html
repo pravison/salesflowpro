@@ -1,0 +1,63 @@
+{% extends 'main.html' %}
+{% block title %}pricing{% endblock title %}
+{% load static %}
+
+
+{% block content %}
+
+  <main id="main">
+
+    <!-- ======= Breadcrumbs ======= -->
+    <div class="breadcrumbs">
+      <div class="page-header d-flex align-items-center" style="background-image: url('assets/img/page-header.jpg');">
+        <div class="container position-relative">
+          <div class="row d-flex justify-content-center">
+            <div class="col-lg-6 text-center">
+              <h2>Pricing</h2>
+              {% for infor in companyinfor %}
+              <p>{{ infor.pitch }}</p>
+              {% endfor %}</div>
+          </div>
+        </div>
+      </div>
+      <nav>
+        <div class="container">
+          <ol>
+            <li><a href="{% url 'landing_page' %}">Home</a></li>
+            <li>Pricing</li>
+          </ol>
+        </div>
+      </nav>
+    </div><!-- End Breadcrumbs -->
+
+    <!-- ======= Pricing Section ======= -->
+    <section id="pricing" class="pricing">
+      <div class="container" data-aos="fade-up">
+
+        <div class="row gy-4">
+          {% for pricing in pricings %}
+          <div class="col-lg-4" data-aos="fade-up" data-aos-delay="200">
+            <div class="pricing-item {% if pricing.recommended %} featured {% endif %}">
+              <h3>{{ pricing.plan}}</h3>
+              <h4><sup>ksh</sup>{{ pricing.new_price}}<span> / month</span></h4>
+              <ul>
+                <li><i class="bi bi-check"></i>{{ pricing.feature1}}</li>
+                <li><i class="bi bi-check"></i>{{ pricing.feature2}}</li>
+                <li><i class="bi bi-check"></i>{{ pricing.feature3}}</li>
+                <li><i class="bi bi-check"></i>{{ pricing.feature4}}</li>
+                <li><i class="bi bi-check"></i>{{ pricing.feature5}}</li>
+                <li><i class="bi bi-check"></i>{{ pricing.feature6}}</li>
+              </ul>
+              <a href="{% url 'register' %}" class="buy-btn">Buy Now</a>
+            </div>
+          </div><!-- End Pricing Item -->
+          {% endfor %}
+        </div>
+
+      </div>
+    </section><!-- End Pricing Section -->
+
+
+  </main><!-- End #main -->
+
+{% endblock content %}

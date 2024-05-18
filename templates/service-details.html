@@ -1,0 +1,75 @@
+{% extends 'main.html' %}
+{% block title %}Services{% endblock title %}
+{% load static %}
+
+
+{% block content %}
+
+  <main id="main">
+
+    <!-- ======= Breadcrumbs ======= -->
+    <div class="breadcrumbs">
+      <div class="page-header d-flex align-items-center" style="background-image: url('assets/img/page-header.jpg');">
+        <div class="container position-relative">
+          <div class="row d-flex justify-content-center">
+            <div class="col-lg-6 text-center">
+              <h2>Service Details</h2>
+              {% for infor in companyinfor %}
+              <p>{{ infor.pitch }}</p>
+              {% endfor %}
+            </div>
+          </div>
+        </div>
+      </div>
+      <nav>
+        <div class="container">
+          <ol>
+            <li><a href="{% url 'landing_page' %}">Home</a></li>
+            <li>Service Details</li>
+          </ol>
+        </div>
+      </nav>
+    </div><!-- End Breadcrumbs -->
+
+    <!-- ======= Service Details Section ======= -->
+    <section id="service-details" class="service-details">
+      <div class="container" data-aos="fade-up">
+
+        <div class="row gy-4">
+
+          <div class="col-lg-4">
+            <!-- <div class="services-list">
+              <a href="#" class="active">Storage</a>
+              <a href="#">Logistics</a>
+              <a href="#">Cargo</a>
+              <a href="#">Trucking</a>
+              <a href="#">Packaging</a>
+              <a href="#">Warehousing</a>
+            </div> -->
+
+            <h4>{{ service.service_name}}</h4>
+            <p>{{ service.service_overview}}</p>
+          </div>
+
+          <div class="col-lg-8">
+            {% if service.imageURL %}
+              <img src="{{service.imageURL}}" alt="" class="img-fluid">
+              {% else %}
+              <img src="{% static 'assets/img/service-' %}{{service.id}}.png" class="img-fluid" alt=""/>
+            {% endif %}
+            <h3>{{ service.service_title}}</h3>
+            <div>
+              {{ service.service_description}} 
+            </div>
+          </div>
+
+        </div>
+
+      </div>
+    </section><!-- End Service Details Section -->
+
+    {% include 'call-to-action.html' %}
+
+  </main><!-- End #main -->
+
+{% endblock %}

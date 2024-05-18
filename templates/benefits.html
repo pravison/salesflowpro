@@ -1,0 +1,52 @@
+{% load static %}
+
+<!-- ======= Features Section ======= -->
+<section id="features" class="features  pt-0">
+    <div class="container">
+      <div class="section-header">
+        <h2>{% for infor in companyinfor %}{{infor.company_name}} {% endfor %} Gives You Everything You Need To Acquire Leads, Nurture those Leads, And Close More Deals</h2>
+
+      </div>
+      {% for benefit in benefits %}
+        {% if forloop.counter|divisibleby:2 %}
+          <div class="row gy-4 align-items-center features-item" data-aos="fade-up">
+            <div class="col-md-5 order-1 order-md-2">
+              {% if benefit.benefit_image %}
+              <img src="{{benefit.imageURL}}" class="img-fluid" alt="">
+              {% else %}
+              <img src="{% static 'assets/img/benefit-' %}{{benefit.id}}.png" class="img-fluid" alt=""/>
+              {% endif %}
+            </div>
+            <div class="col-md-7 order-2 order-md-1">
+              <h3>{{benefit.benefit_title}}</h3>
+              <div>
+                {{benefit.benefit_description | safe }}
+                <br/>
+                <a class="get-a-quote" href="{% url 'register' %}"><button class="btn btn-primary mt-1">Start Your Free Trial Today</button></a>
+              </div>
+            </div>
+          </div><!-- Features Item -->
+        {% else %}
+          <div class="row gy-4 align-items-center features-item" data-aos="fade-up">
+
+            <div class="col-md-5">
+              {% if benefit.benefit_image %}
+              <img src="{{benefit.imageURL}}" class="img-fluid" alt="">
+              {% else %}
+              <img src="{% static 'assets/img/benefit-' %}{{benefit.id}}.png" class="img-fluid" alt=""/>
+              {% endif %}
+            </div>
+            <div class="col-md-7">
+              <h3>{{benefit.benefit_title}}</h3>
+              <div>
+                {{benefit.benefit_description | safe }}
+                <br/>
+                <a class="get-a-quote" href="{% url 'register' %}"><button class="btn btn-primary mt-1">Start Your Free Trial Today</button></a>
+              </div>
+            </div>
+          </div><!-- Features Item -->
+        {% endif %}
+
+      {% endfor %}
+    </div>
+  </section><!-- End Features Section -->

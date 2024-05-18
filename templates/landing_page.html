@@ -1,0 +1,159 @@
+{% extends 'main.html' %}
+{% block title %}Home Page{% endblock title %}
+
+{% load static %}
+
+ {% block content %}
+  <!-- ======= Hero Section ======= -->
+  <section id="hero" class="hero d-flex align-items-center">
+    {% for infor in companyinfor %}
+    <div class="container">
+      <div class="row gy-4 d-flex justify-content-between">
+        <div class="col-lg-6 order-2 order-lg-1 d-flex flex-column justify-content-center">
+          <h1 data-aos="fade-up">{{infor.problem_statement}}</h1>
+          <h2 data-aos="fade-up">Meet {{infor.company_name}}.</h2>
+          <p data-aos="fade-up" data-aos-delay="100">{{infor.solution_statement}}</p>
+          <button class="btn btn-primary"><a class="justify-content-center" href="{% url 'register' %}" style="color:white ;">Start Your Free Trial Today</a></button>
+          <p data-aos="fade-up" data-aos-delay="100" class="text-center">Get started in less than 60 sec <span class='align-items-center mb-3'>.</span> cancel anytime</p>
+        
+          
+
+
+          <div class="row gy-4" data-aos="fade-up" data-aos-delay="400">
+            {% for statistic in statistics %}
+            <div class="col-lg-3 col-6">
+              <div class="stats-item text-center w-100 h-100">
+                <span data-purecounter-start="0" data-purecounter-end='{{ statistic.statistic_number}}' data-purecounter-duration="1" class="purecounter"></span>
+                <p>{{ statistic.statistic_name}}</p>
+              </div>
+            </div><!-- End Stats Item -->
+            {% endfor %}
+
+          </div>
+        </div>
+
+        <div class="col-lg-5 order-1 order-lg-2 hero-img" data-aos="zoom-out">
+          <img src="{%static 'assets/img/img-1.png' %}" class="img-fluid mb-3 mb-lg-0" alt="">
+        </div>
+
+      </div>
+    </div>
+    {% endfor %}
+  </section><!-- End Hero Section -->
+
+  <main id="main">
+
+    {% include 'featured-services.html' %}
+
+    {% include 'testimonial.html' %}
+
+    <!-- ======= About Us Section ======= -->
+    <section id="about" class="about">
+      <div class="container" data-aos="fade-up">
+        {% for why in whyUs %}
+        <div class="row gy-4">
+          <div class="col-lg-6 content order-last  order-lg-first">
+            <h3>So, Why {% for infor in companyinfor %}{{infor.company_name}} {% endfor %}?</h3>
+            <p>{{ why.overview }}</p>
+            <ul>
+              <li data-aos="fade-up" data-aos-delay="100">
+                {% if why.first_point_icon %}<i class="bi bi-{{ why.first_point_icon}}"></i>{% else %} <i class="bi bi-diagram-3"></i>{% endif %}
+                <div>
+                  <h5>{{ why.first_point_title}}</h5>
+                  <p>{{ why.first_point_overview}}</p>
+                </div>
+              </li>
+              <li data-aos="fade-up" data-aos-delay="200">
+                {% if why.second_point_icon %}<i class="bi bi-{{ why.second_point_icon}}"></i>{% else %}<i class="bi bi-fullscreen-exit"></i>{% endif %}
+                <div>
+                  <h5>{{ why.second_point_title}}</h5>
+                  <p>{{ why.second_point_overview}}</p>
+                </div>
+              </li>
+              <li data-aos="fade-up" data-aos-delay="300">
+                {% if why.third_point_icon %}<i class="bi bi-{{ why.third_point_icon}}"></i>{% else %} <i class="bi bi-broadcast"></i>{% endif %}
+                <div>
+                  <h5>{{ why.third_point_title}}</h5>
+                  <p>{{ why.third_point_overview}}</p>
+                </div>
+              </li>
+            </ul>
+          </div>
+          <div class="col-lg-6 position-relative align-self-start order-lg-last order-first">
+            {% if why.image %}
+            <img src="{{why.imageURL}}" class="img-fluid" alt="">
+            {% else %}
+            <img src="{% static 'assets/img/images-2.jpeg' %}" class="img-fluid" alt="">
+            {% endif %}
+            <a href="{{why.youtube_link}}" class="glightbox play-btn"></a>
+          </div>
+        </div>
+        {% endfor %}
+      </div>
+    </section><!-- End About Us Section -->
+  
+    <!-- ======= Services Section ======= -->
+    <section id="service" class="services pt-0">
+      <div class="container" data-aos="fade-up">
+
+        <div class="section-header">
+          <h3>{% for infor in companyinfor %}{{infor.company_name}} {% endfor %} Is The Secret To Your Business Success</h3>
+          <p>It’s the difference between the 1,929,999,999 Sales Rep that don’t make money,<strong> and the .000000002% that do!</strong> </p>
+
+        </div>
+
+        <div class=" row justify-content-center ">
+
+          <div class="col-lg-6 col-md-6 " data-aos="fade-up" data-aos-delay="100">
+            <div class="col-lg-8 col-md-6">
+              <div class="card">
+                
+                <h3>Without A Pipeline </h3>
+                <ul>
+                  {% for other in others %}
+                  <li>{{other.name}}</li>
+                  {% endfor %}
+                </ul>
+              </div>
+            </div>
+            
+          </div><!-- End Card Item -->
+
+          <div class="col-lg-6 col-md-6" data-aos="fade-up" data-aos-delay="200">
+            <div class="col-lg-8 col-md-6">
+              <div class="card">
+                <h3>With A Pipeline</h3>
+                <ol>
+                  {% for benefit in us %}
+                  <li>{{benefit.name}}</li>
+                  {% endfor %}
+                </ol>
+              </div>
+            </div>
+            
+          </div><!-- End Card Item -->
+
+        </div>
+
+        <div class="section-header">
+          <p style="font-style: italic;">Get started in less than 60 sec <span class='align-items-center mb-3'>.</span> cancel anytime</p>
+          <h3>Then Sign Up For {% for infor in companyinfor %}{{infor.company_name}} {% endfor %} Free Trial Today!</h3>
+          <a class="get-a-quote" href="{% url 'register' %}"><button class="btn btn-primary mt-1">Start Your Free Trial Today</button></a>
+          <p data-aos="fade-up" data-aos-delay="100" class="text-center">Get started in less than 60 sec <span class='align-items-center mb-3'>.</span> cancel anytime</p>
+ 
+
+        </div>
+
+      </div>
+    </section><!-- End Services Section -->
+    {% include 'benefits.html' %}
+
+    {% include 'call-to-action.html' %}
+
+    {% include 'faq.html' %}
+
+  </main><!-- End #main -->
+
+  {% endblock %}
+
+  

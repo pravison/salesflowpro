@@ -1,0 +1,31 @@
+{% load static %}
+<!-- ======= Testimonials Section ======= -->
+<section id="testimonials" class="testimonials">
+    <h3 class="text-center" style="font-size: 20px; font-weight: bold; color: #fff; ">World Class Entrepreneurs Love Using {% for infor in companyinfor %}{{infor.company_name}} {% endfor %}</h3>
+
+    <div class="container">
+      <div class="slides-1 swiper" data-aos="fade-up">
+        <div class="swiper-wrapper">
+          {% for testimony in testimonials %}
+          <div class="swiper-slide">
+            <div class="testimonial-item">
+              <img src="{{testimony.imageURL}}" class="testimonial-img" alt="">
+              <h3>{{testimony.testimonial_name}}</h3>
+              <h4>{{testimony.testimonial_proffession}}</h4>
+              <div class="stars">
+                <i class="bi bi-star-fill"></i><i class="bi bi-star-fill"></i><i class="bi bi-star-fill"></i><i class="bi bi-star-fill"></i><i class="bi bi-star-fill"></i>
+              </div>
+              <p>
+                <i class="bi bi-quote quote-icon-left"></i>
+                {{testimony.testimonial_message}}
+                <i class="bi bi-quote quote-icon-right"></i>
+              </p>
+            </div>
+          </div><!-- End testimonial item -->
+          {%endfor %}
+        </div>
+        <div class="swiper-pagination"></div>
+      </div>
+
+    </div>
+  </section><!-- End Testimonials Section -->
