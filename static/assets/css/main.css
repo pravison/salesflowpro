@@ -1069,7 +1069,7 @@ section {
 --------------------------------------------------------------*/
 .testimonials {
   padding: 80px 0;
-  background: linear-gradient(rgba(14, 29, 52, 0.6), rgba(14, 29, 52, 0.8)), url("../img/images.jpeg") no-repeat;
+  background: linear-gradient(rgba(14, 29, 52, 0.6), rgba(14, 29, 52, 0.8)), url("../img/images.jpg") no-repeat;
   background-position: center center;
   background-size: cover;
   position: relative;

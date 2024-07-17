@@ -13,8 +13,8 @@
           <h1 data-aos="fade-up">{{infor.problem_statement}}</h1>
           <h2 data-aos="fade-up">Meet {{infor.company_name}}.</h2>
           <p data-aos="fade-up" data-aos-delay="100">{{infor.solution_statement}}</p>
-          <button class="btn btn-primary"><a class="justify-content-center" href="{% url 'register' %}" style="color:white ;">Start Your Free Trial Today</a></button>
-          <p data-aos="fade-up" data-aos-delay="100" class="text-center">Get started in less than 60 sec <span class='align-items-center mb-3'>.</span> cancel anytime</p>
+          <button class="btn btn-primary"><a class="justify-content-center" href="{% url 'register' %}" style="color:white ;">Join the Waitlist</a></button>
+          <p data-aos="fade-up" data-aos-delay="100" class="text-center">SalesGenie AI is currently in early access as we ramp up capacity. To start using SalesGenie AI for sales work, join the waitlist<span class='align-items-center mb-3'></span></p>
         
           
 
@@ -33,7 +33,7 @@
         </div>
 
         <div class="col-lg-5 order-1 order-lg-2 hero-img" data-aos="zoom-out">
-          <img src="{%static 'assets/img/img-1.png' %}" class="img-fluid mb-3 mb-lg-0" alt="">
+          <img src="{%static 'assets/img/img-1.webp' %}" class="img-fluid mb-3 mb-lg-0" alt="">
         </div>
 
       </div>
@@ -53,7 +53,7 @@
         {% for why in whyUs %}
         <div class="row gy-4">
           <div class="col-lg-6 content order-last  order-lg-first">
-            <h3>So, Why {% for infor in companyinfor %}{{infor.company_name}} {% endfor %}?</h3>
+            <h3>So, Why SalesGenie AI?</h3>
             <p>{{ why.overview }}</p>
             <ul>
               <li data-aos="fade-up" data-aos-delay="100">
@@ -80,11 +80,9 @@
             </ul>
           </div>
           <div class="col-lg-6 position-relative align-self-start order-lg-last order-first">
-            {% if why.image %}
-            <img src="{{why.imageURL}}" class="img-fluid" alt="">
-            {% else %}
-            <img src="{% static 'assets/img/images-2.jpeg' %}" class="img-fluid" alt="">
-            {% endif %}
+            
+            <img src="{% static 'assets/img/why-us.jpg' %}" class="img-fluid" alt="">
+            
             <a href="{{why.youtube_link}}" class="glightbox play-btn"></a>
           </div>
         </div>
@@ -97,8 +95,8 @@
       <div class="container" data-aos="fade-up">
 
         <div class="section-header">
-          <h3>{% for infor in companyinfor %}{{infor.company_name}} {% endfor %} Is The Secret To Your Business Success</h3>
-          <p>It’s the difference between the 1,929,999,999 Sales Rep that don’t make money,<strong> and the .000000002% that do!</strong> </p>
+          <h3>SalesGenie AI Is The Secret To Your Business Success</h3>
+          <p>It’s the difference between the 99% Businesses that don’t make money,<strong> and the 1% that do!</strong> </p>
 
         </div>
 
@@ -108,7 +106,7 @@
             <div class="col-lg-8 col-md-6">
               <div class="card">
                 
-                <h3>Without A SalesGenie </h3>
+                <h3>Without SalesGenie AI </h3>
                 <ul>
                   {% for other in others %}
                   <li>{{other.name}}</li>
@@ -116,13 +114,13 @@
                 </ul>
               </div>
             </div>
-            
+            0
           </div><!-- End Card Item -->
 
           <div class="col-lg-6 col-md-6" data-aos="fade-up" data-aos-delay="200">
             <div class="col-lg-8 col-md-6">
               <div class="card">
-                <h3>With A Pipeline</h3>
+                <h3>With SalesGenie AI</h3>
                 <ol>
                   {% for benefit in us %}
                   <li>{{benefit.name}}</li>
@@ -136,10 +134,8 @@
         </div>
 
         <div class="section-header">
-          <p style="font-style: italic;">Get started in less than 60 sec <span class='align-items-center mb-3'>.</span> cancel anytime</p>
-          <h3>Then Sign Up For {% for infor in companyinfor %}{{infor.company_name}} {% endfor %} Free Trial Today!</h3>
-          <a class="get-a-quote" href="{% url 'register' %}"><button class="btn btn-primary mt-1">Start Your Free Trial Today</button></a>
-          <p data-aos="fade-up" data-aos-delay="100" class="text-center">Get started in less than 60 sec <span class='align-items-center mb-3'>.</span> cancel anytime</p>
+          <a class="get-a-quote" href="{% url 'register' %}"><button class="btn btn-primary mt-1">join the waitlist</button></a>
+          <p data-aos="fade-up" data-aos-delay="100" class="text-center">SalesGenie AI is currently in early access as we ramp up capacity. To start using SalesGenie AI for sales work, join the waitlist<span class='align-items-center mb-3'></span></p>
  
 
         </div>
