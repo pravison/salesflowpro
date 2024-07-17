@@ -13,7 +13,7 @@
           <div class="row d-flex justify-content-center">
             <div class="col-lg-6 text-center">
               <h2>About</h2>
-              <p>{{about.about_pitch}}</p>
+              <p>{{about.about_pitch | safe}}</p>
             </div>
           </div>
         </div>
@@ -42,7 +42,7 @@
           </div>
           <div class="col-lg-6 content order-last  order-lg-first">
             <h3>About Us</h3>
-            <div>{{ about.about_description }}</div>
+            <div>{{ about.about_description | safe }}</div>
           </div>
         </div>
 

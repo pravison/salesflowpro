@@ -1,4 +1,5 @@
 from django.db import models
+from tinymce.models import HTMLField  
 
 # Create your models here.
 class CompanyInfor(models.Model):
@@ -26,7 +27,7 @@ class CompanyInfor(models.Model):
 class AboutUs(models.Model):
     about_pitch = models.TextField()
     about_image = models.ImageField(blank=True, null=True)
-    about_description = models.TextField()
+    about_description = HTMLField()
     youtube_link = models.URLField(blank=True, null=True)
     featured = models.BooleanField(default=False)
 
