@@ -44,7 +44,7 @@ class AboutUs(models.Model):
         return url
     
 class CallToAction(models.Model):
-    message = models.TextField(max_length=150)
+    message = models.TextField(max_length=200)
     reminder = models.TextField(max_length=100, blank=True, null=True)
     featured = models.BooleanField(default=False)
 
