@@ -50,7 +50,7 @@
                 {% if service.imageURL %}
                 <img src="{{service.imageURL}}" alt="" class="img-fluid">
                 {% else %}
-                <img src="{% static 'assets/img/service-' %}{{service.id}}.png" class="img-fluid" alt=""/>
+                <img src="{% static 'assets/img/service-' %}{{service.id}}.jpg" style="width: 100%;" class="img-fluid" alt=""/>
                 {% endif %}
               </div>
               <h3><a href="{% url 'service' service.id %}" class="stretched-link">{{service.service_name}}</a></h3>
