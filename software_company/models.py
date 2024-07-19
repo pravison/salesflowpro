@@ -201,13 +201,13 @@ class WhyUs(models.Model):
     youtube_link = models.URLField(blank=True, null=True)
     first_point_icon = models.CharField(max_length =100)
     first_point_title = models.CharField(max_length =100)
-    first_point_overview = models.TextField(max_length=200)
+    first_point_overview = models.TextField(max_length=400)
     second_point_icon = models.CharField(max_length =100)
     second_point_title = models.CharField(max_length =100)
-    second_point_overview = models.TextField(max_length =200)
+    second_point_overview = models.TextField(max_length =400)
     third_point_icon = models.CharField(max_length =100)
     third_point_title = models.CharField(max_length =100)
-    third_point_overview = models.TextField(max_length =200)
+    third_point_overview = models.TextField(max_length =400)
 
     def __str__(self):
         return self.first_point_title
