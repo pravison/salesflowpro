@@ -6,7 +6,7 @@ class CompanyInfor(models.Model):
     company_name = models.CharField(max_length=40)
     problem_statement = models.TextField(max_length=150)
     solution_statement = models.TextField(max_length=300)
-    pitch = models.TextField(max_length=150)
+    pitch = models.TextField(max_length=300)
     address = models.TextField()
     location = models.TextField()
     geoloction_pin = models.URLField(blank=True, null=True)
