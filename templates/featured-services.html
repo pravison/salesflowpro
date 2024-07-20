@@ -6,10 +6,10 @@
       <div class="row gy-4">
         {% for service in services %}
         <div class="col-lg-4 col-md-6 service-item d-flex" data-aos="fade-up">
-          <div class="icon flex-shrink-0"><i class="fa-solid {{service.icon_name}}"></i></div>
+          <div class="icon flex-shrink-0"><i class="bi bi-{{service.icon_name}}"></i></div>
           <div>
             <h4 class="title">{{service.service_name}}</h4>
-            <p class="description">{{service.service_description | truncatechars:120 }}</p>
+            <p class="description">{{service.service_overview |safe  }}</p>
             <a href="{% url 'service' service.id %}" class="readmore stretched-link"><span>Learn More</span><i class="bi bi-arrow-right"></i></a>
           </div>
         </div>

@@ -48,7 +48,7 @@
             </div> -->
 
             <h4>{{ service.service_name}}</h4>
-            <p>{{ service.service_overview}}</p>
+            <p>{{ service.service_overview |safe}}</p>
           </div>
 
           <div class="col-lg-8">
@@ -59,7 +59,7 @@
             {% endif %}
             <h3>{{ service.service_title}}</h3>
             <div>
-              {{ service.service_description}} 
+              {{ service.service_description |safe}} 
             </div>
           </div>
 

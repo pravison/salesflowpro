@@ -1,10 +1,11 @@
 {% load static %}
 <!-- ======= Testimonials Section ======= -->
+{% if testimonials %}
 <section id="testimonials" class="testimonials">
     <h3 class="text-center" style="font-size: 20px; font-weight: bold; color: #fff; ">World Class Entrepreneurs Love Using SalesGenie AI</h3>
 
     <div class="container">
-      <div class="slides-1 swiper" data-aos="fade-up">
+      <div class="slides-1 swiper">
         <div class="swiper-wrapper">
           {% for testimony in testimonials %}
           <div class="swiper-slide">
@@ -32,4 +33,5 @@
       </div>
 
     </div>
-  </section><!-- End Testimonials Section -->
+</section><!-- End Testimonials Section -->
+{% endif %}

@@ -14,7 +14,7 @@
             <div class="col-lg-6 text-center">
               <h2>Contact</h2>
               {% for about in aboutUs %}
-              <p>{{about.about_pitch}}</p>
+              <p>{{about.about_pitch | safe}}</p>
               {% endfor %}
             </div>
           </div>

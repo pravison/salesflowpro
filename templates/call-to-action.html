@@ -1,6 +1,7 @@
 {% load static %}
 
 <!-- ======= Call To Action Section ======= -->
+{% if callToActions %}
 <section id="call-to-action" class="call-to-action">
     <div class="container" data-aos="zoom-out">
       {% for call in callToActions %}
@@ -15,4 +16,5 @@
       {% endfor %}
 
     </div>
-  </section><!-- End Call To Action Section -->
+</section><!-- End Call To Action Section -->
+{% endif %}

@@ -54,7 +54,7 @@
                 {% endif %}
               </div>
               <h3><a href="{% url 'service' service.id %}" class="stretched-link">{{service.service_name}}</a></h3>
-              <p>{{service.service_description}}</p>
+              <p>{{service.service_overview |safe}}</p>
             </div>
           </div><!-- End Card Item -->
           {% endfor %}

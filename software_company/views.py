@@ -74,17 +74,18 @@ def services(request):
 
 def service(request, id):
     companyinfor = CompanyInfor.objects.order_by('id')[:1]
-    servicess = Service.objects.filter(featured=True).order_by('id')
+    services = Service.objects.filter(featured=True).order_by('id')[:3]
     testimonials = Testimonial.objects.filter(featured=True).order_by('id')[:5]
     callToActions = CallToAction.objects.filter(featured=True).order_by('id')[:1]
     service = Service.objects.get(id=id)
     context = {
         'service' : service,
         'companyinfor' : companyinfor,
-        'servicess' : servicess,
+        'services' :services,
         'testimonials' : testimonials,
         'callToActions':callToActions,
     }
+    print()
     return render(request, 'service-details.html', context)
 
 def pricing(request):

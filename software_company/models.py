@@ -25,7 +25,7 @@ class CompanyInfor(models.Model):
         return self.company_name
     
 class AboutUs(models.Model):
-    about_pitch = models.TextField()
+    about_pitch = HTMLField()
     about_image = models.ImageField(blank=True, null=True)
     about_description = HTMLField()
     youtube_link = models.URLField(blank=True, null=True)
@@ -57,7 +57,7 @@ class Service(models.Model):
     service_image = models.ImageField(blank=True, null=True)
     service_title = models.CharField(max_length=100)#delete this collumn
     service_overview = models.TextField(blank=True, null=True)
-    service_description = models.TextField()
+    service_description = HTMLField()
     featured = models.BooleanField(default=False)
 
     def __str__(self):
@@ -90,7 +90,7 @@ class Benefit(models.Model):
     
 class FAQ(models.Model):
     question = models.TextField()
-    answer = models.TextField()
+    answer = HTMLField()
 
     def __str__(self):
         return self.question
@@ -153,13 +153,13 @@ class Pricing(models.Model):
         return self.plan
 
 class PrivacyPolicy(models.Model):
-    description = models.TextField()
+    description = HTMLField()
 
     def __str__(self):
         return self.description
     
 class TermsAndCondition(models.Model):
-    description = models.TextField()
+    description = HTMLField()
 
     def __str__(self):
         return self.description
@@ -168,7 +168,7 @@ class Staff(models.Model):
     name = models.CharField(max_length=199)
     staff_photo = models.ImageField(blank=True, null=True)
     role = models.CharField(max_length=199)
-    description = models.TextField(max_length=500)
+    description = HTMLField()
     facebook = models.URLField(blank=True, null=True)
     twitter = models.URLField(blank=True, null=True)
     linkedin = models.URLField(blank=True, null=True)

@@ -5,15 +5,17 @@
  {% block content %}
 
   <main id="main">
-    {% for about in aboutUs %}
+    
     <!-- ======= Breadcrumbs ======= -->
     <div class="breadcrumbs">
       <div class="page-header d-flex align-items-center" style="background-image: url('assets/img/page-header.jpg');">
         <div class="container position-relative">
           <div class="row d-flex justify-content-center">
             <div class="col-lg-6 text-center">
+              {% for about in aboutUs %}
               <h2>About</h2>
               <p>{{about.about_pitch | safe}}</p>
+              {% endfor %}
             </div>
           </div>
         </div>
@@ -29,8 +31,9 @@
     </div><!-- End Breadcrumbs -->
     <!-- ======= About Us Section ======= -->
     <section id="about" class="about">
-      <div class="container" data-aos="fade-up">
-
+      <div class="container" >
+       
+        {% for about in aboutUs %}
         <div class="row gy-4">
           <div class="col-lg-6 position-relative align-self-start order-lg-last order-first">
             {% if about.about_image %}
@@ -45,14 +48,14 @@
             <div>{{ about.about_description | safe }}</div>
           </div>
         </div>
-
+        {% endfor %}
       </div>
     </section><!-- End About Us Section -->
-    {% endfor %}
+    
 
     <!-- ======= Stats Counter Section ======= -->
     <section id="stats-counter" class="stats-counter pt-0">
-      <div class="container" data-aos="fade-up">
+      <div class="container" >
 
         <div class="row gy-4">
           {% for stat in statistics %}
@@ -68,8 +71,10 @@
     </section><!-- End Stats Counter Section -->
     {% include 'call-to-action.html' %}
     <!-- ======= Our Team Section ======= -->
+    {% if staffs %}
     <section id="team" class="team pt-0">
-      <div class="container" data-aos="fade-up">
+      
+      <div class="container" >
 
         <div class="section-header">
           <span>Our Team</span>
@@ -102,8 +107,9 @@
         </div>
 
       </div>
+      
     </section><!-- End Our Team Section -->
-
+    {% endif %}
     {% include 'testimonial.html' %}
 
     {% include 'faq.html' %}
