@@ -196,7 +196,7 @@ class Compaarison(models.Model):
         return self.name
 
 class WhyUs(models.Model):
-    overview = models.TextField(max_length=500)
+    overview = models.TextField(max_length=700)
     image = models.ImageField(blank=True, null=True)
     youtube_link = models.URLField(blank=True, null=True)
     first_point_icon = models.CharField(max_length =100)
