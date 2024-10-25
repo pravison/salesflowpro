@@ -14,7 +14,7 @@
           <h2 data-aos="fade-up">Meet SalesGenie AI.</h2>
           <p data-aos="fade-up" data-aos-delay="100">{{infor.solution_statement}}</p>
           <button class="btn btn-primary"><a class="justify-content-center" href="{% url 'register' %}" style="color:white ;">Join the Waitlist</a></button>
-          <p data-aos="fade-up" data-aos-delay="100" class="text-center">SalesGenie AI is currently in early access as we ramp up capacity. To start using SalesGenie AI for sales work, join the waitlist<span class='align-items-center mb-3'></span></p>
+          <p data-aos="fade-up" data-aos-delay="100" class="text-center">{% if callToActions %}{% for call in callToActions %}{{ call.message }}{% endfor %}{% endif %}<span class='align-items-center mb-3'></span></p>
         
           
 
@@ -134,7 +134,7 @@
 
         <div class="section-header">
           <a class="get-a-quote" href="{% url 'register' %}"><button class="btn btn-primary mt-1">join the waitlist</button></a>
-          <p data-aos="fade-up" data-aos-delay="100" class="text-center">SalesGenie AI is currently in early access as we ramp up capacity. To start using SalesGenie AI for sales work, join the waitlist<span class='align-items-center mb-3'></span></p>
+          <p data-aos="fade-up" data-aos-delay="100" class="text-center">{% if callToActions %}{% for call in callToActions %}{{ call.message }}{% endfor %}{% endif %}<span class='align-items-center mb-3'></span></p>
  
 
         </div>
