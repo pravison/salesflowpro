@@ -41,13 +41,16 @@
               <p>your data is safe with us and no data will be shared without your consent.</p>
               {% csrf_token %}
               <div class="row gy-4">
-
-                <div class="col-md-6">
-                  <input type="text" name="company_name" class="form-control" placeholder="Company Name" required>
+                <div class="col-md-12" style="visibility: hidden;">
+                  <input class="form-control" name="plan_id" value="{{ query}}" placeholder="plan_id">
                 </div>
 
                 <div class="col-md-6">
-                  <input type="text" name="country" class="form-control" placeholder="Country Of Operation" required>
+                  <input type="text" name="company_name" class="form-control" placeholder="Company Name /Your Name" required>
+                </div>
+
+                <div class="col-md-6">
+                  <input type="text" name="address" class="form-control" placeholder="address of Your Business" required>
                 </div>
 
                 <div class="col-md-6">
@@ -74,9 +77,9 @@
                   <input type="text" class="form-control" name="phone" placeholder="Phone" required>
                 </div>
 
-                <div class="col-md-12">
+                <!-- <div class="col-md-12">
                   <textarea class="form-control" name="message" rows="6" placeholder="Message" required></textarea>
-                </div>
+                </div> -->
 
                 
                 <div class="col-md-12 text-center">

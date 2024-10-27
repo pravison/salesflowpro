@@ -33,7 +33,10 @@
     <!-- ======= Pricing Section ======= -->
     <section id="pricing" class="pricing">
       <div class="container" data-aos="fade-up">
-
+        <div class="alert text-center alert-success alert-dismissible fade show" role="alert">
+          Choose Your Preffered Plan
+          <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+        </div>
         <div class="row gy-4">
           {% for pricing in pricings %}
           <div class="col-lg-4" data-aos="fade-up" data-aos-delay="200">
@@ -48,7 +51,7 @@
                 <li><i class="bi bi-check"></i>{{ pricing.feature5}}</li>
                 <li><i class="bi bi-check"></i>{{ pricing.feature6}}</li>
               </ul>
-              <a href="{% url 'register' %}" class="buy-btn">Buy Now</a>
+              <a href="{% url 'register' %}?query={{pricing.id}}" class="buy-btn">Select</a>
             </div>
           </div><!-- End Pricing Item -->
           {% endfor %}

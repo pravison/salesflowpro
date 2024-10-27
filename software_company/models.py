@@ -127,9 +127,9 @@ class Lead(models.Model):
     phone_number = models.CharField(max_length=17, blank=True, null=True)
     email = models.EmailField(blank=True, null=True)
     subject= models.TextField(max_length= 150 , blank=True)
-    message = models.TextField(max_length=1000)
+    message = models.TextField(max_length=1000, blank=True)
     company_name =models.CharField(max_length=100,  blank=True, null=True)
-    country =models.CharField(max_length=100,  blank=True, null=True)
+    address =models.CharField(max_length=100,  blank=True, null=True)
     industry =models.CharField(max_length=100, blank=True, null=True)
     number_of_sales_reps =models.CharField(max_length=100, blank=True, null=True)
 
@@ -138,7 +138,7 @@ class Lead(models.Model):
 
 class Pricing(models.Model):
     plan = models.CharField(max_length=170)
-    price = models.IntegerField()
+    price = models.DecimalField(max_digits=10, decimal_places=2)
     new_price = models.IntegerField()
     feature1 = models.CharField(max_length=170, blank=True, null=True)
     feature2 = models.CharField(max_length=170, blank=True, null=True)
@@ -151,6 +151,27 @@ class Pricing(models.Model):
 
     def __str__(self):
         return self.plan
+
+class CustomerPlan(models.Model):
+    customer = models.OneToOneField(Lead, on_delete=models.CASCADE)
+    plan = models.ForeignKey(Pricing, null=True, blank=True, on_delete=models.SET_NULL)
+
+    def __str__(self):
+        return self.customer.name
+    
+class CustomerInvoice(models.Model):
+    amount = models.DecimalField(max_digits=10, decimal_places=2)
+    customer_plan = models.ForeignKey(CustomerPlan, on_delete=models.CASCADE)
+    date_created = models.DateTimeField(auto_now_add=True)
+    paid = models.BooleanField(default=False)
+    month = models.DateField(blank=True, null=True)
+    date_paid = models.DateTimeField(blank=True, null=True)
+
+    def __str__(self):
+        return self.customer_plan.customer.name
+
+
+
 
 class PrivacyPolicy(models.Model):
     description = HTMLField()

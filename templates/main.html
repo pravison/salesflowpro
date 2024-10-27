@@ -62,7 +62,7 @@
           <li><a href="{% url 'services' %}">Services</a></li>
           <li><a href="{% url 'pricing' %}">Pricing</a></li>
           <li><a href="{% url 'contact' %}">Contact</a></li>
-          <li><a class="get-a-quote" href="{% url 'register' %}">Get Started</a></li>
+          <li><a class="get-a-quote" href="{% url 'pricing' %}">Get Started</a></li>
         </ul>
       </nav><!-- .navbar -->
 
@@ -97,7 +97,8 @@
         <div class="col-lg-2 col-6 footer-links">
           <h4>Useful Links</h4>
           <ul>
-            <li><a href="https://blog.salesflowpro.xyz/">Blog</a></li>
+            <li><a href="{% url 'pricing' %}">Get Started</a></li>
+            <li><a href="{% url 'blog' %}">Blog</a></li>
             <li><a href="{% url 'about' %}">About us</a></li>
             <li><a href="{% url 'services' %}">Services</a></li>
             <li><a href="{% url 'pricing' %}">Pricing</a></li>

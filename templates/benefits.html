@@ -4,7 +4,7 @@
 <section id="features" class="features  pt-0">
     <div class="container">
       <div class="section-header">
-        <h2>SalesGenie AI is your 24/7 customer care and your best sales rep ready to serve you. with SalesGenie what should you expect </h2>
+        <h2>SalesGenie AI is your 24/7 sales rep that doesn't let any sale slip away </h2>
 
       </div>
       {% for benefit in benefits %}
@@ -22,7 +22,7 @@
               <div>
                 {{benefit.benefit_description | safe }}
                 <br/>
-                <a class="get-a-quote" href="{% url 'register' %}"><button class="btn btn-primary mt-1">join the waitlist</button></a>
+                <a class="get-a-quote" href="{% url 'pricing' %}"><button class="btn btn-primary mt-1">Get Started</button></a>
               </div>
             </div>
           </div><!-- Features Item -->
@@ -41,7 +41,7 @@
               <div>
                 {{benefit.benefit_description | safe }}
                 <br/>
-                <a class="get-a-quote" href="{% url 'register' %}"><button class="btn btn-primary mt-1">join the waitlist</button></a>
+                <a class="get-a-quote" href="{% url 'pricing' %}"><button class="btn btn-primary mt-1">Get Started</button></a>
               </div>
             </div>
           </div><!-- Features Item -->

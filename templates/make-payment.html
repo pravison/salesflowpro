@@ -1,0 +1,88 @@
+{% extends 'main.html' %}
+{% load static %}
+{% block title %}make payment {% endblock %}
+
+{% block content %}
+<script src="https://js.paystack.co/v1/inline.js"></script>
+<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-Zenh87qX5JnK2Jl0vWa8Ck2rdkQ2Bzep5IDxbcnCeuOxjzrPF/et3URy9Bv1WTRi" crossorigin="anonymous">
+<!-- JavaScript Bundle with Popper -->
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-OERcA2EqjJCMA+/3y+gxIOqMEjwtxJY7qPCqsdltbNJuaOe923+mo//f6V8Qbsw3" crossorigin="anonymous"></script>
+<!-- ======= Breadcrumbs ======= -->
+<main id="main">
+<div class="breadcrumbs">
+	<div class="page-header d-flex align-items-center" style="background-image: url('assets/img/page-header.jpg');">
+	  <div class="container position-relative">
+		<div class="row d-flex justify-content-center">
+		  <div class="col-lg-6 text-center">
+			<h2>Complete Purchase</h2>
+		  </div>
+		</div>
+	  </div>
+	</div>
+	<nav>
+	  <div class="container">
+		<ol>
+		  <li><a href="{% url 'landing_page' %}">Home</a></li>
+		  <li>Complete Purchase</li> 
+		</ol>
+	  </div>
+	</nav>
+  </div><!-- End Breadcrumbs -->
+<section class="features-1">
+	<div class="container">
+		<div class="row">
+		<div class="col-12 col-lg-12" data-aos="fade-up" data-aos-delay="300">
+			<div class="box-feature">
+			</div>
+			<div class="col-lg-7">
+				{% if messages %}
+					{% for message in messages %}
+					  <div class="alert alert-warning alert-dismissible fade show" role="alert">
+						{{ message }}
+						<button  type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+					  </div>
+	
+	
+					{% endfor %}
+				  {% endif %}
+				<div class="row gy-4">
+				  <h4> You are about to Pay ksh. {{ payment.amount }} to {% for infor in companyinfor %} {{infor.company_name}} {% endfor %}</h4>
+				</div>
+				<button id="complete-purchase-button"  onclick="payWithPaystack()" class="btn btn-primary btn-block mb-4">Complete Purchase</button>
+			</div><!-- End Quote Form -->
+		</div>
+		</div>
+	</div>
+</section>
+</main>
+
+
+<script>
+	function payWithPaystack() {
+
+		let currency = "KES";
+		let plan = "";
+		let ref = "{{ payment.ref }}";
+		let amount = "{{ payment.amount }}";
+		let obj = {
+			key: "{{ paystack_pub_key }}",
+			phone_number: "{{ payment.phone_number }}",
+			amount: "{{ amount_value }}",
+			ref: ref,
+			callback: function (response) {
+				window.location.href = "{% url 'verify_payment' payment.ref %}";
+			},
+		};
+		if (Boolean(currency)) {
+			obj.currency = currency.toUpperCase();
+		}
+		if (Boolean(plan)) {
+			obj.plan - plan;
+		}
+
+		var handler = PaystackPop.setup(obj);
+		handler.openIframe();
+	}
+</script>
+
+{% endblock %}

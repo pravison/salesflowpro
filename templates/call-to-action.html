@@ -4,17 +4,14 @@
 {% if callToActions %}
 <section id="call-to-action" class="call-to-action">
     <div class="container" data-aos="zoom-out">
-      {% for call in callToActions %}
       <div class="row justify-content-center">
         <div class="col-lg-8 text-center">
-          <h3><a class="get-a-quote" href="{% url 'register' %}"><button class="btn btn-primary mt-1">join the waitlist</button></a></h3>
+          <h3><a class="get-a-quote" href="{% url 'pricing' %}"><button class="btn btn-primary mt-1">Get Started</button></a></h3>
           <!-- <p>{{ call.message }}</p> -->
-          <p>{{ call.message }}<span class='align-items-center mb-3'>.</span> </p>
+          <p>{{callToActions.message }}<span class='align-items-center mb-3'>.</span> </p>
           <!-- <p>{{ call.reminder }}</p> -->
         </div>
       </div>
-      {% endfor %}
-
     </div>
 </section><!-- End Call To Action Section -->
 {% endif %}

@@ -48,6 +48,7 @@ INSTALLED_APPS = [
    
     'software_company',
     'blog',
+    'payments',
     #dependecies
     'tinymce',
 ]
@@ -150,6 +151,11 @@ MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
 
 # Default primary key field type
 # https://docs.djangoproject.com/en/5.0/ref/settings/#default-auto-field
+
+#paystack keys 
+PAYSTACK_SECRET_KEY = env('PAYSTACK_SECRET_KEY')
+PAYSTACK_PUBLIC_KEY = env('PAYSTACK_PUBLIC_KEY')
+
 
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 

@@ -9,12 +9,22 @@
     {% for infor in companyinfor %}
     <div class="container">
       <div class="row gy-4 d-flex justify-content-between">
+        {% if messages %}
+          {% for message in messages %}
+            <div class="alert alert-warning alert-dismissible fade show" role="alert">
+              {{ message }}
+              <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+            </div>
+
+
+          {% endfor %}
+        {% endif %}
         <div class="col-lg-6 order-2 order-lg-1 d-flex flex-column justify-content-center">
           <h1 data-aos="fade-up">{{infor.problem_statement}}</h1>
           <h2 data-aos="fade-up">Meet SalesGenie AI.</h2>
           <p data-aos="fade-up" data-aos-delay="100">{{infor.solution_statement}}</p>
-          <button class="btn btn-primary"><a class="justify-content-center" href="{% url 'register' %}" style="color:white ;">Join the Waitlist</a></button>
-          <p data-aos="fade-up" data-aos-delay="100" class="text-center">{% if callToActions %}{% for call in callToActions %}{{ call.message }}{% endfor %}{% endif %}<span class='align-items-center mb-3'></span></p>
+          <button class="btn btn-primary"><a class="justify-content-center" href="{% url 'pricing' %}" style="color:white ;">Get Started Now</a></button>
+          <p data-aos="fade-up" data-aos-delay="100" class="text-center">{% if callToActions %}{{ callToActions.message }}{% endif %}<span class='align-items-center mb-3'></span></p>
         
           
 
@@ -133,8 +143,8 @@
         </div>
 
         <div class="section-header">
-          <a class="get-a-quote" href="{% url 'register' %}"><button class="btn btn-primary mt-1">join the waitlist</button></a>
-          <p data-aos="fade-up" data-aos-delay="100" class="text-center">{% if callToActions %}{% for call in callToActions %}{{ call.message }}{% endfor %}{% endif %}<span class='align-items-center mb-3'></span></p>
+          <a class="get-a-quote" href="{% url 'pricing' %}"><button class="btn btn-primary mt-1">Get Started Now</button></a>
+          <p data-aos="fade-up" data-aos-delay="100" class="text-center">{% if callToActions %}{{ call.message }}{% endif %}<span class='align-items-center mb-3'></span></p>
  
 
         </div>

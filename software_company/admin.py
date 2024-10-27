@@ -1,5 +1,5 @@
 from django.contrib import admin
-from . models import CompanyInfor, CallToAction, AboutUs, Service, Statistic, Benefit, FAQ, Testimonial, Staff, Lead, WhyUs, Pricing , Compaarison           
+from . models import CompanyInfor, CustomerInvoice, CustomerPlan, CallToAction, AboutUs, Service, Statistic, Benefit, FAQ, Testimonial, Staff, Lead, WhyUs, Pricing , Compaarison           
 # Register your models here., 
 
 
@@ -16,3 +16,5 @@ admin.site.register(Pricing)
 admin.site.register(Staff)
 admin.site.register(Compaarison)
 admin.site.register(WhyUs)
+admin.site.register( CustomerPlan)
+admin.site.register(CustomerInvoice)
