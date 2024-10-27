@@ -15,7 +15,8 @@ def initiate_payment(request, id):
 		pk = settings.PAYSTACK_PUBLIC_KEY
 		invoice = CustomerInvoice.objects.filter(id=invoice_id).first()
 		phone_number=invoice.customer_plan.customer.phone_number
-		payment = Payment.objects.create(amount=invoice.amount, phone_number=phone_number, invoice=invoice)
+		email = invoice.customer_plan.customer.email
+		payment = Payment.objects.create(amount=invoice.amount, phone_number=phone_number, email=email, invoice=invoice)
 		payment.save()
 
 		context = {

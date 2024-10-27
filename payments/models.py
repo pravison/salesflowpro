@@ -18,6 +18,7 @@ class Payment(models.Model):
 	amount = models.PositiveIntegerField()
 	ref = models.CharField(max_length=200)
 	phone_number = models.CharField(max_length=20)
+	email = models.EmailField()
 	verified = models.BooleanField(default=False)
 	date_created = models.DateTimeField(auto_now_add=True)
 
