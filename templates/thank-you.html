@@ -87,7 +87,7 @@
                               <tr>
                                 <td>{{invoice.customer_plan.plan.plan}}</td>
                                 <td>1</td>
-                                <td>{{invoice.customer_plan.plan.price}}</td>
+                                <td>{{invoice.amount}}</td>
                               </tr>
                               <tr>
                                 
@@ -96,9 +96,8 @@
                           </table>
                           <hr/>
                           <div class="col-md-4 align-items-left"  >
-                            <h6 ><strong>Tax  : 1600</strong></h6>
-                            <h6 ><strong>Discount  : 1600</strong></h6>
-                            <h6 ><strong>Total : {{invoice.customer_plan.plan.price}}</strong></h6>
+                            <h6 ><strong>Tax  : {{ tax }}</strong></h6>
+                            <h6 ><strong>Total : {{total}}</strong></h6>
                           </div>
                           
                           <a class="btn btn-primary text-center" href="{% url 'initiate_payment' invoice.id %}"> Pay Now</a>

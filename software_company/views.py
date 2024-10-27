@@ -122,10 +122,16 @@ def thankYou(request, id ):
     companyinfor = CompanyInfor.objects.order_by('id')[:1]
     invoice = CustomerInvoice.objects.filter(id=id).first()
     testimonials = Testimonial.objects.filter(featured=True).order_by('id')[:5]
+    tax = ((16 * invoice.amount)/100)
+
+    total = invoice.amount + tax
+
     context = {
         'companyinfor' : companyinfor,
         'testimonials' : testimonials,
-        'invoice': invoice
+        'invoice': invoice,
+        'tax': tax,
+		'total': total
     }
     return render(request, 'thank-you.html', context)
 

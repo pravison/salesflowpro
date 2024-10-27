@@ -9,14 +9,22 @@ from django.conf import settings
 def initiate_payment(request, id):
 	invoice = CustomerInvoice.objects.filter(id=id).first()
 	companyinfor = CompanyInfor.objects.order_by('id')[:1]
+
+	tax = ((16 * invoice.amount)/100)
+
+	total = invoice.amount + tax
+
 	if request.method == "POST":
 		invoice_id = request.POST['invoice']
 
 		pk = settings.PAYSTACK_PUBLIC_KEY
 		invoice = CustomerInvoice.objects.filter(id=invoice_id).first()
+		tax = ((16 * invoice.amount)/100)
+
+		total = invoice.amount + tax
 		phone_number=invoice.customer_plan.customer.phone_number
 		email = invoice.customer_plan.customer.email
-		payment = Payment.objects.create(amount=invoice.amount, phone_number=phone_number, email=email, invoice=invoice)
+		payment = Payment.objects.create(amount=total, phone_number=phone_number, email=email, invoice=invoice)
 		payment.save()
 
 		context = {
@@ -29,7 +37,9 @@ def initiate_payment(request, id):
 		return render(request, 'make-payment.html', context)
 	context = {
 			'invoice': invoice,
-			'companyinfor': companyinfor
+			'companyinfor': companyinfor,
+			'tax': tax,
+			'total': total
 		}
 	return render(request, 'payment.html', context)
 
