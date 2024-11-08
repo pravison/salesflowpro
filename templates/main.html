@@ -151,65 +151,181 @@
   <!-- End Footer -->
 
   <a href="#" class="scroll-top d-flex align-items-center justify-content-center"><i class="bi bi-arrow-up-short"></i></a>
-  <div 
-    style="position: fixed; z-index: 99999; width: 50px; height: 50px; border-radius: 4px; right: 15px; bottom: 15px;"
-    >
-      <a href="https://wa.me/254740562740/?text=hello..." class="d-flex align-items-center justify-content-center btn btn-primary py-2 px-3" target="_blank" title="reach out through whatsapp">
-        <span class="icon-whatsapp xxl"></span>
-      </a>
-  </div>
   <script>
     (function() {
-       // Create chatbox element
+       // Create WhatsApp button
+       const whatsappButton = document.createElement('div');
+       whatsappButton.style.position = 'fixed';
+       whatsappButton.style.bottom = '11px';
+       whatsappButton.style.right = '109px';
+       whatsappButton.style.width = '50px';
+       whatsappButton.style.height = '50px';
+       whatsappButton.style.borderRadius = '50%';
+       whatsappButton.style.backgroundColor = '#25D366'; // WhatsApp green color
+       whatsappButton.style.color = '#fff';
+       whatsappButton.style.display = 'flex';
+       whatsappButton.style.alignItems = 'center';
+       whatsappButton.style.justifyContent = 'center';
+       whatsappButton.style.cursor = 'pointer';
+       whatsappButton.style.zIndex = '1000';
+       whatsappButton.innerHTML = '<i class="bi bi-whatsapp"></i>'; // WhatsApp icon (Bootstrap)
+ 
+       // Add click event to open WhatsApp chat
+       whatsappButton.onclick = function() {
+          window.open('https://wa.me/254739594678/?text=hello...', '_blank');
+       };
+ 
+       // Append button to body
+       document.body.appendChild(whatsappButton);
+    })();
+  </script>
+ 
+ 
+  <script>
+    (function() {
+       // Create chat button
+       const chatButton = document.createElement('div');
+       chatButton.style.position = 'fixed';
+       chatButton.style.bottom = '11px';
+       chatButton.style.right = '57px';
+       chatButton.style.width = '50px';
+       chatButton.style.height = '50px';
+       chatButton.style.borderRadius = '50%';
+       chatButton.style.backgroundColor = '#007bff';
+       chatButton.style.color = '#fff';
+       chatButton.style.display = 'flex';
+       chatButton.style.alignItems = 'center';
+       chatButton.style.justifyContent = 'center';
+       chatButton.style.cursor = 'pointer';
+       chatButton.style.zIndex = '1000';
+       chatButton.innerHTML = '<i class="bi bi-chat-dots"></i>';
+       document.body.appendChild(chatButton);
+ 
+       // Create chatbox element (hidden initially)
        const chatBox = document.createElement('div');
        chatBox.style.position = 'fixed';
-       chatBox.style.bottom = '20px';
-       chatBox.style.right = '20px';
+       chatBox.style.bottom = '40px';
+       chatBox.style.right = '30px';
        chatBox.style.width = '300px';
-       chatBox.style.height = '400px';
        chatBox.style.border = '1px solid #ccc';
+       chatBox.style.borderRadius = '10px';
        chatBox.style.backgroundColor = '#fff';
+       chatBox.style.boxShadow = '0 4px 8px rgba(0, 0, 0, 0.1)';
+       chatBox.style.display = 'none';
        chatBox.style.zIndex = '1000';
        chatBox.innerHTML = `
-          <div style="padding: 10px; background-color: #007bff; color: #fff; font-weight: bold;">
-             Chat with us
-             <button onclick="toggleChat()" style="float: right; color: #fff; background: none; border: none;">X</button>
+          <div style="padding: 10px; background-color: #007bff; color: #fff; font-weight: bold; border-radius: 10px 10px 0 0;">
+             <span>Sales Genie</span>
+             <button onclick="toggleChat()" style="float: right; color: #fff; background: none; border: none; font-size: 16px;">&times;</button>
           </div>
-          <div id="chatContent" style="height: 300px; overflow-y: auto; padding: 10px;"></div>
-          <input id="userMessage" type="text" placeholder="Type your message..." style="width: 90%; padding: 10px;" />
-          <button onclick="sendMessage()" style="width: 100%;">Send</button>
+          <div id="chatContent" style="height: 250px; overflow-y: auto; padding: 10px; font-family: Arial, sans-serif; font-size: 14px;">
+          </div>
+          <div style="display: flex; border-top: 1px solid #ccc;">
+             <input id="userMessage" type="text" placeholder="Write a message" style="flex: 1; padding: 10px; border: none; outline: none; border-radius: 0 0 0 10px;" />
+             <button onclick="sendMessage()" style="padding: 10px; background-color: #007bff; color: #fff; border: none; border-radius: 0 0 10px 0; cursor: pointer;">
+                send
+             </button>
+          </div>
+          <div style="text-align: center; font-size: 12px; padding: 5px;">
+             <a href="https://salesflowpro.xyz/" target="_blank">powered by Salesflow Pro</a>
+          </div>
        `;
        document.body.appendChild(chatBox);
-       
+ 
        // Toggle chat visibility
-       window.toggleChat = function() {
-          chatBox.style.display = chatBox.style.display === 'none' ? 'block' : 'none';
+       chatButton.onclick = function() {
+          chatButton.style.display = 'none';
+          chatBox.style.display = 'block';
+          loadChatHistory(); // Load chat history when opening chatbox
        }
  
-       // Send message to Django backend
+       window.toggleChat = function() {
+          chatBox.style.display = 'none';
+          chatButton.style.display = 'flex';
+       }
+ 
+       // Function to save chat message in local storage
+       function saveMessage(type, message) {
+          const chatHistory = JSON.parse(localStorage.getItem('chatHistory')) || [];
+          chatHistory.push({ type, message });
+          localStorage.setItem('chatHistory', JSON.stringify(chatHistory));
+       }
+ 
+       // Function to load chat history from local storage
+       function loadChatHistory() {
+          const chatHistory = JSON.parse(localStorage.getItem('chatHistory')) || [];
+          const chatContent = document.getElementById('chatContent');
+          chatContent.innerHTML = ''; // Clear existing content
+ 
+          chatHistory.forEach(entry => {
+             const messageDiv = document.createElement('div');
+             messageDiv.innerHTML = `
+                <div style="margin-bottom: 10px; text-align: ${entry.type === 'user' ? 'right' : 'left'};">
+                   <div style="display: inline-block; background-color: ${entry.type === 'user' ? '#007bff' : '#f1f1f1'}; color: ${entry.type === 'user' ? '#fff' : '#000'}; border-radius: 10px; padding: 10px; max-width: 70%;">
+                      ${entry.message}
+                   </div>
+                </div>
+             `;
+             chatContent.appendChild(messageDiv);
+          });
+          chatContent.scrollTop = chatContent.scrollHeight;
+       }
+ 
+       // Function to send message to backend
        window.sendMessage = function() {
           const message = document.getElementById('userMessage').value;
           if (!message) return;
- 
-          fetch('https://your-django-server.com/api/chatbot/', {
-             method: 'POST',
-             headers: {
+
+          saveMessage('user', message); // Save user message
+          displayMessage('user', message); // Display user message
+
+            // Retrieve the last 5 messages (adjust this number as needed)
+          const chatHistory = JSON.parse(localStorage.getItem('chatHistory')) || [];
+          const recentMessages = chatHistory.slice(-10); // Take the last 10 messages for context
+
+          // Prepare the request payload with the recent messages and the new question
+          const payload = {
+              message: message,
+              history: recentMessages
+          };
+  
+          fetch('https://aiagent.salesflowpro.xyz/chatbot-response/', {
+              method: 'POST',
+              headers: {
                 'Content-Type': 'application/json'
-             },
-             body: JSON.stringify({ message })
+              },
+              body: JSON.stringify(payload)
           })
           .then(response => response.json())
           .then(data => {
-             const chatContent = document.getElementById('chatContent');
-             chatContent.innerHTML += `<div>User: ${message}</div>`;
-             chatContent.innerHTML += `<div>Bot: ${data.response}</div>`;
-             chatContent.scrollTop = chatContent.scrollHeight;
-             document.getElementById('userMessage').value = '';
+              saveMessage('bot', data.response); // Save bot response
+              displayMessage('bot', data.response); // Display bot response
           })
           .catch(error => console.error('Error:', error));
+
+          document.getElementById('userMessage').value = '';
+        }
+ 
+       // Function to display message in chatbox
+       function displayMessage(type, message) {
+          const chatContent = document.getElementById('chatContent');
+          const messageDiv = document.createElement('div');
+          messageDiv.innerHTML = `
+             <div style="margin-bottom: 10px; text-align: ${type === 'user' ? 'right' : 'left'};">
+                <div style="display: inline-block; background-color: ${type === 'user' ? '#007bff' : '#f1f1f1'}; color: ${type === 'user' ? '#fff' : '#000'}; border-radius: 10px; padding: 10px; max-width: 70%;">
+                   ${message}
+                </div>
+             </div>
+          `;
+          chatContent.appendChild(messageDiv);
+          chatContent.scrollTop = chatContent.scrollHeight;
        }
+ 
+       // Load chat history when the script is first run
+       loadChatHistory();
     })();
- </script>
+  </script>
+  
  
   <div id="preloader"></div>
 

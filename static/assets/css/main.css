@@ -297,6 +297,7 @@ section {
 .header .logo img {
   max-height: 40px;
   margin-right: 6px;
+  
 }
 
 .header .logo h1 {
@@ -1802,6 +1803,11 @@ section {
   font-family: var(--font-primary);
   font-size: 15px;
   font-weight: 600;
+}
+
+.hero .hero-img{
+  border-radius: 10px;
+  object-fit: cover;
 }
 
 /*--------------------------------------------------------------
