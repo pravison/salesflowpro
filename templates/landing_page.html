@@ -15,9 +15,12 @@
               {{ message }}
               <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
             </div>
-
-
           {% endfor %}
+        {% else %}
+        <div class="alert alert-warning alert-dismissible fade show" role="alert">
+          <p>We are Rebranding from salesflow pro to Pasona</p>
+          <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+        </div>
         {% endif %}
         <div class="col-lg-6 order-2 order-lg-1 d-flex flex-column justify-content-center">
           <h1 data-aos="fade-up">{{infor.problem_statement}}</h1>
