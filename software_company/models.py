@@ -139,7 +139,7 @@ class Lead(models.Model):
 class Pricing(models.Model):
     plan = models.CharField(max_length=170)
     price = models.DecimalField(max_digits=10, decimal_places=2)
-    new_price = models.IntegerField()
+    new_price = models.DecimalField(max_digits=10, decimal_places=2)
     feature1 = models.CharField(max_length=170, blank=True, null=True)
     feature2 = models.CharField(max_length=170, blank=True, null=True)
     feature3 = models.CharField(max_length=170, blank=True, null=True)

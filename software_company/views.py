@@ -123,15 +123,17 @@ def thankYou(request, id ):
     invoice = CustomerInvoice.objects.filter(id=id).first()
     testimonials = Testimonial.objects.filter(featured=True).order_by('id')[:5]
     tax = ((16 * invoice.amount)/100)
+    discount = ((16 * invoice.amount)/100)
 
-    total = invoice.amount + tax
+    total = invoice.amount + tax - discount
 
     context = {
         'companyinfor' : companyinfor,
         'testimonials' : testimonials,
         'invoice': invoice,
         'tax': tax,
-		'total': total
+		'total': total,
+        'discount': discount
     }
     return render(request, 'thank-you.html', context)
 
@@ -151,7 +153,7 @@ def leads(request):
             plan = Pricing.objects.filter(id=plan_id).first()
             customer_plan = CustomerPlan.objects.create(customer=contact, plan=plan )
             first_day_of_invoice = date.today() + timedelta(days=7)
-            customer_invoice = CustomerInvoice.objects.create(customer_plan=customer_plan, amount=customer_plan.plan.price, month=first_day_of_invoice)
+            customer_invoice = CustomerInvoice.objects.create(customer_plan=customer_plan, amount=customer_plan.plan.new_price, month=first_day_of_invoice)
             messages.success(request, 'Thanks for Joining us !!!')
             return redirect('thank_you', customer_invoice.id)
             

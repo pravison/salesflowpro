@@ -11,8 +11,9 @@ def initiate_payment(request, id):
 	companyinfor = CompanyInfor.objects.order_by('id')[:1]
 
 	tax = ((16 * invoice.amount)/100)
+	discount = ((16 * invoice.amount)/100)
 
-	total = invoice.amount + tax
+	total = invoice.amount + tax - discount
 
 	if request.method == "POST":
 		invoice_id = request.POST['invoice']
@@ -21,7 +22,9 @@ def initiate_payment(request, id):
 		invoice = CustomerInvoice.objects.filter(id=invoice_id).first()
 		tax = ((16 * invoice.amount)/100)
 
-		total = invoice.amount + tax
+		discount = ((16 * invoice.amount)/100)
+
+		total = invoice.amount + tax - discount
 		phone_number=invoice.customer_plan.customer.phone_number
 		email = invoice.customer_plan.customer.email
 		payment = Payment.objects.create(amount=total, phone_number=phone_number, email=email, invoice=invoice)
